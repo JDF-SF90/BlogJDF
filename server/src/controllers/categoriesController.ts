@@ -5,16 +5,19 @@ import pool from '../database';
 
 class CategoriesController {
 
-    public list (req: Request,res: Response) {
-         res.json('list categories');
+    public async list (req: Request,res: Response) {
+        const categories = await pool.query('CALL ng_blog_db.GET_ALL_CATEGORIES()');
+        res.json(categories);
     }
 
     public getOne (req: Request,res: Response) {
         res.json('One');
    }
 
-    public create(req: Request,res: Response){
-        res.json({text:'creating a game'});
+    public async create(req: Request,res: Response): Promise<void>{
+        
+        await pool.query('CALL ng_blog_db.INSERT_CATEGORIES(?,?)', req.params.name, req.params.description);
+        res.json({message:'categorie saved'});
     }
 
     public delete(req: Request,res: Response){
