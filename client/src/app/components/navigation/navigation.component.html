@@ -5,12 +5,10 @@
     <span class="navbar-toggler-icon"></span>
   </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li *ngFor="let categoria of categorias" [type]="element">
-                    {{categoria.name}}
+            <ul class="navbar-nav ml-auto" *ngFor="let categoria of categorias">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">{{categoria[0].name}}</a>
                 </li>
-
-
             </ul>
         </div>
     </div>
