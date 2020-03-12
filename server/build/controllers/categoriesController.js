@@ -41,10 +41,22 @@ class CategoriesController {
         });
     }
     delete(req, res) {
-        res.json({ text: 'delete a game' });
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            var sql_statement = "CALL ng_blog_db.DELETE_CATEGORIE_byId(" + id + ")";
+            console.log(sql_statement);
+            yield database_1.default.query(sql_statement);
+            res.json({ message: 'categoria eliminada' });
+        });
     }
     update(req, res) {
-        res.json({ text: 'update a game' });
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            var sql_statement = "CALL ng_blog_db.UPDATE_CATEGORIE_byId('" + id + "','" + req.body['name'] + "','" + req.body['description'] + "')";
+            console.log(sql_statement);
+            yield database_1.default.query(sql_statement);
+            res.json({ message: 'categoria actualizada' });
+        });
     }
 }
 const categoriesController = new CategoriesController();

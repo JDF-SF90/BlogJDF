@@ -29,12 +29,20 @@ class CategoriesController {
         res.json({message:'categorie saved'});
     }
 
-    public delete(req: Request,res: Response){
-        res.json({text:'delete a game'});
+    public async delete(req: Request,res: Response): Promise<void>{
+        const { id } = req.params;
+        var sql_statement = "CALL ng_blog_db.DELETE_CATEGORIE_byId(" + id + ")";
+        console.log(sql_statement);
+        await pool.query(sql_statement);
+        res.json({message: 'categoria eliminada'});
     }
 
-    public update(req: Request,res: Response){
-        res.json({text:'update a game'});
+    public async update(req: Request,res: Response): Promise<void>{
+        const { id } = req.params;
+        var sql_statement = "CALL ng_blog_db.UPDATE_CATEGORIE_byId('" + id + "','"  + req.body['name'] + "','" + req.body['description'] + "')";
+        console.log(sql_statement);
+        await pool.query(sql_statement);
+        res.json({message:'categoria actualizada'});
     }
 }
 
