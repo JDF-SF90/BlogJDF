@@ -21,11 +21,22 @@ class CategoriesController {
         });
     }
     getOne(req, res) {
-        res.json('One');
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            var sql_statement = "CALL ng_blog_db.GET_CATEGORIE_byId(" + id + ")";
+            console.log(sql_statement);
+            const categorie = yield database_1.default.query(sql_statement);
+            if (categorie.length > 0) {
+                return res.json(categorie[0]);
+            }
+            res.status(404).json({ text: 'categoria no encontrada' });
+        });
     }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield database_1.default.query('CALL ng_blog_db.INSERT_CATEGORIES(?,?)', req.params.name, req.params.description);
+            var sql_statement = "CALL ng_blog_db.INSERT_CATEGORIES('" + req.body['name'] + "','" + req.body['description'] + "')";
+            console.log(sql_statement);
+            yield database_1.default.query(sql_statement);
             res.json({ message: 'categorie saved' });
         });
     }
