@@ -6,8 +6,10 @@ import { AppComponent } from './app.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { CategorieFormComponent } from './components/categorie-form/categorie-form.component';
 import { CategorieListComponent } from './components/categorie-list/categorie-list.component';
-
+import { TopicListComponent } from './components/topic-list/topic-list.component';
 import { CategoriesService } from './services/categories.service';
+import { TopicFormComponent } from './components/topic-form/topic-form.component';
+
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { CategoriesService } from './services/categories.service';
     AppComponent,
     NavigationComponent,
     CategorieFormComponent,
-    CategorieListComponent
+    CategorieListComponent,
+    TopicListComponent,
+    TopicFormComponent
   ],
   imports: [
     BrowserModule,
