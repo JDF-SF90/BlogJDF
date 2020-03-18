@@ -1,3 +1,28 @@
-<p>
-  categorie-list works!
-</p>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th colspan="5">
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-success">Agregar Categoria</button>
+                </div>
+            </th>
+        </tr>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Descripcíon</th>
+            <th scope="col">Eliminar</th>
+            <th scope="col">Editar</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let categoria of categorias[0] | paginate: { itemsPerPage: 10, currentPage: p}; let i = index">
+            <th scope="row">{{categoria.categorie_id}}</th>
+            <td>{{categoria.name}}</td>
+            <td>{{categoria.description}}</td>
+            <td><button class="btn btn-danger"><i class="fa fa-trash"></i></button></td>
+            <td><button class="btn btn-info"><i class="fa fa-edit"></i></button></td>
+        </tr>
+    </tbody>
+</table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

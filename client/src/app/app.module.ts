@@ -9,7 +9,7 @@ import { CategorieListComponent } from './components/categorie-list/categorie-li
 import { TopicListComponent } from './components/topic-list/topic-list.component';
 import { CategoriesService } from './services/categories.service';
 import { TopicFormComponent } from './components/topic-form/topic-form.component';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -24,7 +24,8 @@ import { TopicFormComponent } from './components/topic-form/topic-form.component
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [ CategoriesService ],
   bootstrap: [AppComponent]
