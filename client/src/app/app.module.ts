@@ -10,7 +10,8 @@ import { TopicListComponent } from './components/topic-list/topic-list.component
 import { CategoriesService } from './services/categories.service';
 import { TopicFormComponent } from './components/topic-form/topic-form.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularMaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    BrowserAnimationsModule,
+    AngularMaterialModule
   ],
   providers: [ CategoriesService ],
   bootstrap: [AppComponent]
