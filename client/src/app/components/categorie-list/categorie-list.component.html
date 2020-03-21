@@ -6,7 +6,7 @@
                     <div class="mr-auto p-2 bd-highlight">
                         <h1>Categorias</h1>
                     </div>
-                    <div class="p-2 bd-highlight"><button class="btn btn-success" (click)="openDialog()">Agregar Categoria</button></div>
+                    <div class="p-2 bd-highlight"><button class="btn btn-success" (click)="openDialog(0)">Agregar Categoria</button></div>
 
                 </div>
             </th>
@@ -24,8 +24,8 @@
             <th scope="row">{{categoria.categorie_id}}</th>
             <td>{{categoria.name}}</td>
             <td>{{categoria.description}}</td>
-            <td><button class="btn btn-danger"><i class="fa fa-trash"></i></button></td>
-            <td><button class="btn btn-info"><i class="fa fa-edit"></i></button></td>
+            <td><button class="btn btn-danger" (click)="deleteCategorie(categoria.categorie_id)"><i class="fa fa-trash"></i></button></td>
+            <td><button class="btn btn-info" (click)="openDialog(categoria.categorie_id)"><i class="fa fa-edit"></i></button></td>
         </tr>
     </tbody>
 </table>

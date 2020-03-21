@@ -3,6 +3,7 @@ import { CategoriesService } from '../../services/categories.service';
 import { CategorieFormComponent } from './categorie-form.component';
 
 import { MatDialog, MatDialogRef, MatDialogConfig } from '@angular/material';
+import { Categorie } from '../../models/Categorie';
 
 @Component({
   selector: 'app-categorie-list',
@@ -13,6 +14,7 @@ import { MatDialog, MatDialogRef, MatDialogConfig } from '@angular/material';
 export class CategorieListComponent implements OnInit {
   p = 1;
   categorias: any = [];
+  categorie: Categorie;
 
   CategorieFormComponent: MatDialogRef<CategorieFormComponent>;
 
@@ -20,6 +22,10 @@ export class CategorieListComponent implements OnInit {
   constructor(private categorieService: CategoriesService, private dialog: MatDialog) { }
 
   ngOnInit() {
+    this.getCategories();
+  }
+
+  getCategories() {
     this.categorieService.getCategories().subscribe(
       res => {
         this.categorias = res;
@@ -28,23 +34,80 @@ export class CategorieListComponent implements OnInit {
     );
   }
 
-  openDialog() {
+
+  openDialog(id: number) {
 
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
+    dialogConfig.height = '275px';
+    dialogConfig.width = '400px';
 
     dialogConfig.data = {
-      id: 1,
-      title: 'Angular For Beginners'
+      title: 'Categoria',
+      categorie_id: 0,
+      name: '',
+      description: ''
     };
+
+    if (id > 0) {
+      this.categorieService.getCategorie(id.toString()).subscribe(
+        res => {
+          dialogConfig.data.name = res[0].name;
+          dialogConfig.data.description = res[0].description;
+          dialogConfig.data.categorie_id = res[0].categorie_id;
+        },
+        err => {
+          console.log(err);
+        }
+      );
+    }
 
     this.CategorieFormComponent = this.dialog.open(CategorieFormComponent, dialogConfig);
 
     this.CategorieFormComponent.afterClosed().subscribe(
-        data => console.log('Dialog output:', data)
+        data => {
+        if (data) {
+          this.categorie = data;
+          if (id === 0) {
+          this.categorieService.saveCategorie(this.categorie).subscribe(
+            res => {
+              console.log(res);
+              this.getCategories();
+            },
+            err => {
+              console.log(err);
+            }
+          );
+          } else {
+            this.categorieService.updateCategorie(id.toString(), this.categorie).subscribe(
+              res => {
+                console.log(res);
+                this.getCategories();
+              },
+              err => {
+                console.log(err);
+              }
+            );
+          }
+
+        }
+      }
       );
 
   }
+
+  deleteCategorie(id: string) {
+    this.categorieService.deleteCategorie(id).subscribe(
+      res => {
+        console.log(res);
+        this.getCategories();
+      },
+      err => {
+        console.log(err);
+      }
+      );
+  }
+
 }
