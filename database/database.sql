@@ -6,6 +6,7 @@ CREATE TABLE categories(
     categorie_id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100),
     description VARCHAR(255),
+    is_active int(1),
     created_datetime datetime not null,
     created_userId INT(11),
     modified_datetime datetime,
@@ -74,3 +75,142 @@ BEGIN
 
 END$$
 
+USE ng_blog_db;
+
+CREATE TABLE topics(
+    topic_id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    contenido text,
+    picture varchar(100),
+    categorie_id int(11),
+    visitas int(11),
+    likes int(11),
+    tiempo int(11),
+    link varchar(1000),
+    is_active int(1),
+    created_datetime datetime not null,
+    created_userId INT(11),
+    modified_datetime datetime,
+    modified_userId INT(11),
+    FOREIGN KEY (categorie_id) REFERENCES categories(categorie_id)
+);
+
+
+USE ng_blog_db;
+
+DELIMITER $$
+
+CREATE PROCEDURE INSERT_TOPIC (
+IN 	pname  VARCHAR(100), 
+	pcontenido text,
+    ppicture varchar(100),
+    pcategorie_id int(11),
+    ptiempo int(11),
+    plink varchar(1000)
+
+)
+BEGIN
+	
+    INSERT INTO TOPICS (name,
+        contenido,
+        picture,
+        categorie_id,
+        tiempo,
+        link,
+        is_active,
+        created_datetime,
+        created_userId)
+    VALUES ( pname, 
+	        pcontenido,
+            ppicture,
+            pcategorie_id,
+            ptiempo,
+            plink,
+            1, now(), 1);
+
+END$$
+
+
+USE ng_blog_db;
+
+DELIMITER $$
+
+CREATE PROCEDURE GET_ALL_TOPICS()
+BEGIN
+	
+    SELECT * FROM TOPICS;
+
+END$$
+
+USE ng_blog_db;
+
+DELIMITER $$
+
+CREATE PROCEDURE GET_ALL_TOPICS_byCategorieId (IN pId INT(11))
+BEGIN
+	
+    SELECT * FROM TOPICS WHERE CATEGORIE_ID = pId;
+
+END$$
+
+USE ng_blog_db;
+
+DELIMITER $$
+
+CREATE PROCEDURE GET_TOPIC_byId (IN pId INT(11))
+BEGIN
+	
+    SELECT * FROM TOPICS WHERE TOPIC_ID = pId;
+
+END$$
+
+USE ng_blog_db;
+
+DELIMITER $$
+
+CREATE PROCEDURE DELETE_TOPIC_byId (IN pId INT(11))
+BEGIN
+	
+    DELETE FROM TOPICS WHERE TOPIC_ID = pId;
+
+END$$
+
+USE ng_blog_db;
+
+DELIMITER $$
+
+CREATE PROCEDURE DELETE_TOPIC_byId (IN pId INT(11))
+BEGIN
+	
+    DELETE FROM TOPICS WHERE TOPIC_ID = pId;
+
+END$$
+
+USE ng_blog_db;
+
+DELIMITER $$
+
+CREATE PROCEDURE UPDATE_TOPIC_byId (
+    pname  VARCHAR(100), 
+	pcontenido text,
+    ppicture varchar(100),
+    pcategorie_id int(11),
+    ptiempo int(11),
+    plink varchar(1000),
+    pisActive int(1)
+)
+BEGIN
+	
+    UPDATE TOPICS SET 
+        name = pname, 
+        contenido = pcontenido,
+        picture = ppicture,
+        categorie_id = pcategorie_id,
+        tiempo = ptiempo,
+        link = plink,
+        is_active = pisActive,
+        MODIFIED_DATETIME = NOW(), 
+        MODIFIED_USERID = 1)  
+    WHERE Topic = pId;
+
+END$$
