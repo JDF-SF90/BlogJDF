@@ -16,8 +16,12 @@
                     <li class="nav-item">
                         <a class="nav-link" routerLink="/acerca" routerLinkActive="active">Acerca</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/categorias" routerLinkActive="active">Categorias</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Acciones</a>
+                        <div class="dropdown-menu" style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: 0px; will-change: transform;" x-placement="bottom-start">
+                            <a class="dropdown-item" routerLink="/categorias">Categorias</a>
+                            <a class="dropdown-item" routerLink="/topics/add">Agregar Tema</a>
+                        </div>
                     </li>
                 </ul>
             </div>

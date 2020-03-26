@@ -106,7 +106,8 @@ IN 	pname  VARCHAR(100),
     ppicture varchar(100),
     pcategorie_id int(11),
     ptiempo int(11),
-    plink varchar(1000)
+    plink varchar(1000),
+    pisactive int(1)
 
 )
 BEGIN
@@ -126,7 +127,8 @@ BEGIN
             pcategorie_id,
             ptiempo,
             plink,
-            1, now(), 1);
+            pisactive,
+            now(), 1);
 
 END$$
 

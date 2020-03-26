@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { TopicListComponent } from '../app/components/topic-list/topic-list.component';
 import { CategorieListComponent } from '../app/components/categorie-list/categorie-list.component';
-
+import { TopicFormComponent } from '../app/components/topic-form/topic-form.component';
 
 const routes: Routes = [
   {
@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: 'categorias',
     component: CategorieListComponent
+  },
+  {
+    path: 'topics/add',
+    component: TopicFormComponent
   }
 
 

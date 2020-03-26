@@ -4,6 +4,9 @@ import cors from 'cors';
 
 import indexRoutes from './routes/indexRoutes';
 import categoriasRoutes from './routes/categoriasRoutes';
+import topicsRoutes from './routes/topicsRoutes';
+
+
 
 class Server {
     
@@ -30,6 +33,7 @@ class Server {
     routes(): void {
         this.app.use('/',indexRoutes);
         this.app.use('/api/categorias',categoriasRoutes);
+        this.app.use('/api/topics',topicsRoutes);
     }
 
     //inicializar el servidor
