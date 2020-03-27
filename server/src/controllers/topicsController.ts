@@ -35,7 +35,7 @@ class TopicsController {
 
     public async create(req: Request,res: Response): Promise<void>{
         
-        var sql_statement = "CALL ng_blog_db.INSERT_TOPICS('" + req.body['name'] + "','" + req.body['contenido'] + "','" + req.body['picture'] + "','" + req.body['categorie_id'] + "','" + req.body['tiempo'] + "','" + req.body['link'] + "','" + req.body['isactive'] + "')";
+        var sql_statement = "CALL ng_blog_db.INSERT_TOPIC('" + req.body['name'] + "','" + req.body['contenido'] + "','" + req.body['picture'] + "','" + req.body['categorie_id'] + "','" + req.body['tiempo'] + "','" + req.body['link'] + "','" + req.body['isActive'] + "')";
         console.log(sql_statement);
         await pool.query(sql_statement);
         res.json({message:'topic saved'});
