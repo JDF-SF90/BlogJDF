@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
+const path_1 = __importDefault(require("path"));
 const indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
 const categoriasRoutes_1 = __importDefault(require("./routes/categoriasRoutes"));
 const topicsRoutes_1 = __importDefault(require("./routes/topicsRoutes"));
@@ -23,6 +24,7 @@ class Server {
         this.app.use(cors_1.default());
         this.app.use(express_1.default.json()); //entiende envio y recepcion json
         this.app.use(express_1.default.urlencoded({ extended: false }));
+        this.app.use('/uploads', express_1.default.static(path_1.default.resolve('uploads')));
     }
     //definir de app las rutas del servidor
     routes() {

@@ -1,6 +1,8 @@
 import express, {Application} from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
+import path from 'path';
+
 
 import indexRoutes from './routes/indexRoutes';
 import categoriasRoutes from './routes/categoriasRoutes';
@@ -26,6 +28,7 @@ class Server {
         this.app.use(cors());
         this.app.use(express.json()); //entiende envio y recepcion json
         this.app.use(express.urlencoded({extended:false}));
+        this.app.use('/uploads', express.static(path.resolve('uploads')));
 
     }
 

@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
+const multer_1 = __importDefault(require("../libs/multer"));
 const topicsController_1 = __importDefault(require("../controllers/topicsController"));
 class TopicsRoutes {
     constructor() {
@@ -14,7 +15,7 @@ class TopicsRoutes {
         this.router.get('/', topicsController_1.default.list);
         this.router.get('/:id', topicsController_1.default.getAllbyCategorieId);
         this.router.get('/:id', topicsController_1.default.getOneTopic);
-        this.router.post('/', topicsController_1.default.create);
+        this.router.post('/', multer_1.default.single('image'), topicsController_1.default.create);
         this.router.delete('/:id', topicsController_1.default.delete);
         this.router.put('/:id', topicsController_1.default.update);
     }
