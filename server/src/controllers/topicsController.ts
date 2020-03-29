@@ -1,5 +1,6 @@
 import {Request, Response} from 'express';
-
+import path from 'path';
+import fs from 'fs-extra';
 import pool from '../database';
 
 
@@ -43,10 +44,18 @@ class TopicsController {
 
     public async delete(req: Request,res: Response): Promise<void>{
         const { id } = req.params;
-        var sql_statement = "CALL ng_blog_db.DELETE_TOPIC_byId(" + id + ")";
+
+        var sql_statement = "CALL ng_blog_db.GET_TOPIC_byId(" + id + ")";
         console.log(sql_statement);
-        await pool.query(sql_statement);
-        res.json({message: 'topic eliminada'});
+        const topic = await pool.query(sql_statement);
+        if(topic.length > 0){
+            console.log(topic[0][0].picture);
+            await fs.unlink(path.resolve(topic[0][0].picture));
+            var sql_statement = "CALL ng_blog_db.DELETE_TOPIC_byId(" + id + ")";
+            console.log(sql_statement);
+            await pool.query(sql_statement);
+            res.json({message: 'topic eliminada'});
+        }
     }
 
     public async update(req: Request,res: Response): Promise<void>{

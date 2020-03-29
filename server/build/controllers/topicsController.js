@@ -12,6 +12,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const path_1 = __importDefault(require("path"));
+const fs_extra_1 = __importDefault(require("fs-extra"));
 const database_1 = __importDefault(require("../database"));
 class TopicsController {
     list(req, res) {
@@ -55,10 +57,17 @@ class TopicsController {
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            var sql_statement = "CALL ng_blog_db.DELETE_TOPIC_byId(" + id + ")";
+            var sql_statement = "CALL ng_blog_db.GET_TOPIC_byId(" + id + ")";
             console.log(sql_statement);
-            yield database_1.default.query(sql_statement);
-            res.json({ message: 'topic eliminada' });
+            const topic = yield database_1.default.query(sql_statement);
+            if (topic.length > 0) {
+                console.log(topic[0][0].picture);
+                yield fs_extra_1.default.unlink(path_1.default.resolve(topic[0][0].picture));
+                var sql_statement = "CALL ng_blog_db.DELETE_TOPIC_byId(" + id + ")";
+                console.log(sql_statement);
+                yield database_1.default.query(sql_statement);
+                res.json({ message: 'topic eliminada' });
+            }
         });
     }
     update(req, res) {
