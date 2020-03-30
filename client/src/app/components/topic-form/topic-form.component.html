@@ -29,6 +29,10 @@
                             <mat-form-field style="width: 10%;" [hideRequiredMarker]="true" [floatLabel]="'auto'">
                                 <input matInput type="number" name="tiempo" [(ngModel)]="topic.tiempo" placeholder="Tiempo" required>
                             </mat-form-field>
+                            <br>
+
+                            <input type="file" class="d-none" (change)="onFileSelected($event)" #fileInput>
+                            <img [src]="fileSelected || 'assets/noimage.png'" class="img-fluid" alt="sin imagen" (click)="fileInput.click()">
 
                         </mat-card-content>
                         <mat-card-actions>

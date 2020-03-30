@@ -24,8 +24,21 @@ export class TopicsService {
     return this.http.delete(`${this.API_URI}/topics/${id}`);
   }
 
-  saveTopic(topic: Topic) {
-    return this.http.post(`${this.API_URI}/topics`, topic);
+  saveTopic(topic: Topic, file: File) {
+    console.log(topic);
+    console.log(file.name);
+
+    const fd = new FormData();
+    fd.append('isActive', topic.isActive.toString());
+    fd.append('name', topic.name);
+    fd.append('contenido', topic.contenido);
+    fd.append('categorie_id', topic.categorie_id.toString());
+    fd.append('tiempo', topic.tiempo.toString());
+    fd.append('link', topic.link);
+    fd.append('image', file);
+
+    return this.http.post(`${this.API_URI}/topics`, fd);
+
   }
 
   updateTopic(id: string, topic: Topic): Observable<any> {

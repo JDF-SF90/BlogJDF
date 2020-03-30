@@ -3,6 +3,11 @@ import { Topic } from '../../models/Topic';
 import { TopicsService } from '../../services/topics.service';
 import { CategoriesService } from '../../services/categories.service';
 
+interface HtmlInputEvent extends Event {
+  target: HTMLInputElement & EventTarget;
+}
+
+
 @Component({
   selector: 'app-topic-form',
   templateUrl: './topic-form.component.html',
@@ -10,6 +15,8 @@ import { CategoriesService } from '../../services/categories.service';
 })
 export class TopicFormComponent implements OnInit {
 
+  file: File;
+  fileSelected: string | ArrayBuffer;
   categorias: any = [];
 
   topic: Topic = {
@@ -54,7 +61,8 @@ export class TopicFormComponent implements OnInit {
 
 guardarTema() {
     console.log(this.topic);
-    this.topicService.saveTopic(this.topic).subscribe(
+
+    this.topicService.saveTopic(this.topic, this.file).subscribe(
       res => {
         console.log(res);
       },
@@ -62,6 +70,16 @@ guardarTema() {
         console.log(err);
       }
     );
+  }
+
+  onFileSelected(event: HtmlInputEvent){
+    if (event.target.files && event.target.files[0]) {
+      this.file = event.target.files[0] as File;
+
+      const reader = new FileReader();
+      reader.onload = e => this.fileSelected = reader.result;
+      reader.readAsDataURL(this.file);
+    }
   }
 
 }
