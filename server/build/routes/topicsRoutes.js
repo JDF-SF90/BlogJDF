@@ -14,7 +14,7 @@ class TopicsRoutes {
     config() {
         this.router.get('/', topicsController_1.default.list);
         this.router.get('/:id', topicsController_1.default.getAllbyCategorieId);
-        this.router.get('/:id', topicsController_1.default.getOneTopic);
+        this.router.get('/topic/:id', topicsController_1.default.getOneTopic);
         this.router.post('/', multer_1.default.single('image'), topicsController_1.default.create);
         this.router.delete('/:id', topicsController_1.default.delete);
         this.router.put('/:id', topicsController_1.default.update);
