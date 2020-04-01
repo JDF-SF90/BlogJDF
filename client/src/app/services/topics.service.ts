@@ -16,8 +16,12 @@ export class TopicsService {
     return this.http.get(`${this.API_URI}/topics`);
   }
 
-  getTopic(id: string) {
+  getTopicsByCategorieId(id: string) {
     return this.http.get(`${this.API_URI}/topics/${id}`);
+  }
+
+  getTopic(id: string) {
+    return this.http.get(`${this.API_URI}/topics/topic/${id}`);
   }
 
   deleteTopic(id: string) {

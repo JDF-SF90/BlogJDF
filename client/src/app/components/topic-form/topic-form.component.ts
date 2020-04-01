@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Topic } from '../../models/Topic';
 import { TopicsService } from '../../services/topics.service';
 import { CategoriesService } from '../../services/categories.service';
+import { Router } from '@angular/router';
 
 interface HtmlInputEvent extends Event {
   target: HTMLInputElement & EventTarget;
@@ -33,7 +34,7 @@ export class TopicFormComponent implements OnInit {
   };
 
 
-  constructor(private topicService: TopicsService, private categorieService: CategoriesService) { }
+  constructor(private topicService: TopicsService, private categorieService: CategoriesService, private router: Router) { }
 
   ngOnInit() {
     this.getCategorias();
@@ -65,6 +66,7 @@ guardarTema() {
     this.topicService.saveTopic(this.topic, this.file).subscribe(
       res => {
         console.log(res);
+        this.router.navigate(['/topics']);
       },
       err => {
         console.log(err);

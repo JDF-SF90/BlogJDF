@@ -1,0 +1,16 @@
+.example-card {
+    max-width: 300px;
+}
+
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+
+.text {
+    display: block;
+    overflow: hidden;
+    max-width: 75ch;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

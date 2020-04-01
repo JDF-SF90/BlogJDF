@@ -22,9 +22,11 @@ const routes: Routes = [
   {
     path: 'topics/add',
     component: TopicFormComponent
+  },
+  {
+    path: 'topics/:id',
+    component: TopicListComponent
   }
-
-
 ];
 
 @NgModule({

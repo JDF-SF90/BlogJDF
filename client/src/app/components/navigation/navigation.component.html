@@ -8,9 +8,9 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Temas</a>
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Categorias</a>
                         <div class="dropdown-menu" style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: 0px; will-change: transform;" x-placement="bottom-start">
-                            <a class="dropdown-item" *ngFor="let categoria of categorias[0]; let i = index" routerLink="/topics">{{categoria.name}}</a>
+                            <a class="dropdown-item" *ngFor="let categoria of categorias[0]; let i = index" [routerLink]="['/topics',categoria.categorie_id]">{{categoria.name}}</a>
                         </div>
                     </li>
                     <li class="nav-item">
