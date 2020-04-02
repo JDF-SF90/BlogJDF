@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { CategorieFormComponent } from './components/categorie-list/categorie-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TopicViewComponent } from './components/topic-view/topic-view.component';
 
 
 
@@ -24,7 +25,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CategorieListComponent,
     TopicListComponent,
     TopicFormComponent,
-    CategorieFormComponent
+    CategorieFormComponent,
+    TopicViewComponent
   ],
   imports: [
     BrowserModule,

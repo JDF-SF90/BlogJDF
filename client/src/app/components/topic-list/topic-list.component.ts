@@ -20,13 +20,12 @@ export class TopicListComponent implements OnInit {
 
   ngOnInit() {
     this.activateRoute.params.subscribe(params => {
-        this.id = params['id'];
-        });
-    if (this.id) {
-      this.getTopics(this.id);
-    } else {
-    this.getTopics('');
-    }
+      this.id = params['id'];
+      if (this.id) {
+        this.getTopics(this.id);
+      } else {
+      this.getTopics('');
+      }});
   }
 
   getTopics(id: string) {

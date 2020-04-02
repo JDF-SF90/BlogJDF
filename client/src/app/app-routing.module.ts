@@ -4,6 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { TopicListComponent } from '../app/components/topic-list/topic-list.component';
 import { CategorieListComponent } from '../app/components/categorie-list/categorie-list.component';
 import { TopicFormComponent } from '../app/components/topic-form/topic-form.component';
+import { TopicViewComponent } from './components/topic-view/topic-view.component';
+
 
 const routes: Routes = [
   {
@@ -26,6 +28,10 @@ const routes: Routes = [
   {
     path: 'topics/:id',
     component: TopicListComponent
+  },
+  {
+    path: 'topicView/:id',
+    component: TopicViewComponent
   }
 ];
 
