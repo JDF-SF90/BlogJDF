@@ -10,5 +10,5 @@ export interface Topic {
     picture?: string;
     visitas?: number;
     likes?: number;
-    isActive: number;
+    isActive?: number;
 }

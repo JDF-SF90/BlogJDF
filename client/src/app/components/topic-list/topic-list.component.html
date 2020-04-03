@@ -10,7 +10,7 @@
                 <img mat-card-image [src]="'http://localhost:3000/' + topic.picture">
                 <mat-card-content>
                     <p class="text">
-                        <a routerLink="/topicView/1">
+                        <a [routerLink]="['/topicView', topic.topic_id]">
                         {{topic.contenido}}
                         </a>
                     </p>
