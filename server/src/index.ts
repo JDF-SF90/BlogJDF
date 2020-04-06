@@ -7,8 +7,7 @@ import path from 'path';
 import indexRoutes from './routes/indexRoutes';
 import categoriasRoutes from './routes/categoriasRoutes';
 import topicsRoutes from './routes/topicsRoutes';
-
-
+import authRoutes from './routes/authRoutes';
 
 class Server {
     
@@ -37,6 +36,7 @@ class Server {
         this.app.use('/',indexRoutes);
         this.app.use('/api/categorias',categoriasRoutes);
         this.app.use('/api/topics',topicsRoutes);
+        this.app.use('/api/auth', authRoutes);
     }
 
     //inicializar el servidor
