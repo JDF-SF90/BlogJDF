@@ -14,6 +14,7 @@ import { MaterialModule } from './material.module';
 import { CategorieFormComponent } from './components/categorie-list/categorie-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TopicViewComponent } from './components/topic-view/topic-view.component';
+import { SignupViewComponent } from './components/signup-view/signup-view.component';
 
 
 
@@ -26,7 +27,8 @@ import { TopicViewComponent } from './components/topic-view/topic-view.component
     TopicListComponent,
     TopicFormComponent,
     CategorieFormComponent,
-    TopicViewComponent
+    TopicViewComponent,
+    SignupViewComponent
   ],
   imports: [
     BrowserModule,

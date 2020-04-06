@@ -5,6 +5,7 @@ import { TopicListComponent } from '../app/components/topic-list/topic-list.comp
 import { CategorieListComponent } from '../app/components/categorie-list/categorie-list.component';
 import { TopicFormComponent } from '../app/components/topic-form/topic-form.component';
 import { TopicViewComponent } from './components/topic-view/topic-view.component';
+import { SignupViewComponent } from './components/signup-view/signup-view.component';
 
 
 const routes: Routes = [
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'topicView/:id',
     component: TopicViewComponent
+  },
+  {
+    path: 'SignUp',
+    component: SignupViewComponent
   }
 ];
 
