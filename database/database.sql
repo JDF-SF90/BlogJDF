@@ -216,3 +216,32 @@ BEGIN
     WHERE Topic = pId;
 
 END$$
+
+
+USE ng_blog_db;
+
+CREATE TABLE tripulantes(
+    tripulante_id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    apellido VARCHAR(100),
+    picture varchar(1000),
+    provider_id varchar(1000),
+	mail varchar(100),
+    pass varchar(100),
+    is_active int(1),
+    created_datetime datetime not null,
+    created_userId INT(11),
+    modified_datetime datetime,
+    modified_userId INT(11)
+);
+
+USE ng_blog_db;
+
+DELIMITER $$
+
+CREATE PROCEDURE GET_TRIPULANTE_BY_PROVIDERID(IN pId varchar(1000))
+BEGIN
+	
+    SELECT * FROM TRIPULANTES WHERE provider_id = pId;
+
+END$$

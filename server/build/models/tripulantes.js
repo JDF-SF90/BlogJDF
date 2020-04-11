@@ -8,28 +8,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-class AuthController {
-    login(req, res) {
+const database_1 = __importDefault(require("../database"));
+class TripulantesModel {
+    findbyId(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            res.json('login');
+            const tripulante = yield database_1.default.query("CALL ng_blog_db.GET_TRIPULANTE_BY_ID(" + id + ")");
+            return tripulante;
         });
     }
-    logOut(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            res.json('logout');
-        });
+    create() {
     }
-    google(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            res.json('google');
-        });
+    Update() {
     }
-    redirect(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            res.json('redirect');
-        });
+    delete() {
     }
 }
-const authController = new AuthController();
-exports.default = authController;
+const tripulantesModel = new TripulantesModel();
+exports.default = tripulantesModel;

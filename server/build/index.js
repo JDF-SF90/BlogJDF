@@ -7,6 +7,7 @@ const express_1 = __importDefault(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
 const path_1 = __importDefault(require("path"));
+require("./libs/passport.setup");
 const indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
 const categoriasRoutes_1 = __importDefault(require("./routes/categoriasRoutes"));
 const topicsRoutes_1 = __importDefault(require("./routes/topicsRoutes"));

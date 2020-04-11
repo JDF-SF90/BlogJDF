@@ -6,15 +6,19 @@ import pool from '../database';
 class AuthController {
 
     public async login (req: Request,res: Response) {
-        console.log('log in');
+        res.json('login');
     }
 
     public async logOut (req: Request,res: Response) {
-        console.log('log out');
+        res.json('logout');
     }
 
     public async google (req: Request,res: Response) {
-        console.log('Google');
+        res.json('google');
+    }
+
+    public async redirect (req: Request,res: Response) {
+        res.json('redirect');
     }
 
 }

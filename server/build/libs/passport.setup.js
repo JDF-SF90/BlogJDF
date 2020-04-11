@@ -8,5 +8,9 @@ const passport_google_oauth20_1 = __importDefault(require("passport-google-oauth
 const keys_1 = __importDefault(require("../config/keys"));
 passport_1.default.use(new passport_google_oauth20_1.default.Strategy({
     clientID: keys_1.default.google.clientID,
-    clientSecret: keys_1.default.google.clientSecret
-}, () => { }));
+    clientSecret: keys_1.default.google.clientSecret,
+    callbackURL: '/api/auth/google/redirect'
+}, (accessToken, refreshToken, profile, done) => {
+    console.log('passport callback fired');
+    console.log(profile);
+}));
