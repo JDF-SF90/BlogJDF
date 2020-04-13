@@ -2,12 +2,14 @@ import express, {Application} from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import path from 'path';
-
+import cookieSession from 'cookie-session';
 import './libs/passport.setup';   
 import indexRoutes from './routes/indexRoutes';
 import categoriasRoutes from './routes/categoriasRoutes';
 import topicsRoutes from './routes/topicsRoutes';
 import authRoutes from './routes/authRoutes';
+import keys from './config/keys';
+import passport from 'passport';
 
 class Server {
 
@@ -30,7 +32,13 @@ class Server {
         this.app.use(cors());
         this.app.use(express.json()); //entiende envio y recepcion json
         this.app.use(express.urlencoded({extended:false}));
-        this.app.use('/uploads', express.static(path.resolve('uploads')));        
+        this.app.use('/uploads', express.static(path.resolve('uploads')));
+        this.app.use(cookieSession({
+            maxAge: 24 * 60 * 60 * 1000,
+            keys: [keys.cookie.sessionkey]
+        }));  
+        this.app.use(passport.initialize());      
+        this.app.use(passport.session());  
     }
 
     //definir de app las rutas del servidor

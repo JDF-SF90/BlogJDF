@@ -18,7 +18,7 @@ class AuthController {
     }
 
     public async redirect (req: Request,res: Response) {
-        res.json('redirect');
+        res.send(req.user);
     }
 
 }

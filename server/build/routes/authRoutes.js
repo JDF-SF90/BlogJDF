@@ -17,7 +17,9 @@ class AuthRoutes {
         this.router.get('/google', passport_1.default.authenticate('google', {
             scope: ['profile']
         }), authController_1.default.google);
-        this.router.get('/google/redirect', passport_1.default.authenticate('google'), authController_1.default.redirect);
+        this.router.get('/google/redirect', passport_1.default.authenticate('google'), (req, res) => {
+            res.send(req.user);
+        });
     }
 }
 const authRoutes = new AuthRoutes();

@@ -7,11 +7,14 @@ const express_1 = __importDefault(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
 const path_1 = __importDefault(require("path"));
+const cookie_session_1 = __importDefault(require("cookie-session"));
 require("./libs/passport.setup");
 const indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
 const categoriasRoutes_1 = __importDefault(require("./routes/categoriasRoutes"));
 const topicsRoutes_1 = __importDefault(require("./routes/topicsRoutes"));
 const authRoutes_1 = __importDefault(require("./routes/authRoutes"));
+const keys_1 = __importDefault(require("./config/keys"));
+const passport_1 = __importDefault(require("passport"));
 class Server {
     constructor() {
         this.app = express_1.default();
@@ -27,6 +30,12 @@ class Server {
         this.app.use(express_1.default.json()); //entiende envio y recepcion json
         this.app.use(express_1.default.urlencoded({ extended: false }));
         this.app.use('/uploads', express_1.default.static(path_1.default.resolve('uploads')));
+        this.app.use(cookie_session_1.default({
+            maxAge: 24 * 60 * 60 * 1000,
+            keys: [keys_1.default.cookie.sessionkey]
+        }));
+        this.app.use(passport_1.default.initialize());
+        this.app.use(passport_1.default.session());
     }
     //definir de app las rutas del servidor
     routes() {

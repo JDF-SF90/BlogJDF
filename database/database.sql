@@ -245,3 +245,33 @@ BEGIN
     SELECT * FROM TRIPULANTES WHERE provider_id = pId;
 
 END$$
+
+USE ng_blog_db;
+
+DELIMITER $$
+
+CREATE PROCEDURE GET_TRIPULANTE_BY_ID(IN pId varchar(1000))
+BEGIN
+	
+    SELECT * FROM TRIPULANTES WHERE tripulante_id = pId;
+
+END$$
+
+
+USE ng_blog_db;
+
+DELIMITER $$
+
+CREATE PROCEDURE INSERT_TRIPULANTE_BYPROVIDER(
+IN pname  VARCHAR(100), 
+ppicture varchar(1000),
+pprovider_id varchar(1000),
+pmail varchar(100)
+)
+BEGIN
+	
+    INSERT INTO TRIPULANTES (name, picture, provider_id, mail, is_active, created_datetime, created_userId)
+    VALUES (pname, ppicture, pprovider_id, pmail, 1 , now(), 1);
+    
+END$$
+
