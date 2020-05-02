@@ -1,29 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-<<<<<<< HEAD
-=======
 import { JwtResponse } from '../models/jwt-response';
 import { User } from '../models/user';
 import { tap } from 'rxjs/operators';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 
->>>>>>> new_branch
-
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-<<<<<<< HEAD
-  API_URI = 'http://localhost:3000/api';
-
-  constructor(private http: HttpClient) { }
-
-  google() {
-    return this.http.get(`${this.API_URI}/auth/google`);
-  }
-=======
   API_URI = 'http://localhost:3000/api/auth';
   authSubject = new BehaviorSubject(false);
   private token: string;
@@ -64,6 +51,7 @@ export class AuthService {
     } else {
       return false;
     }
+
   }
 
   public getToken(): string {
@@ -74,5 +62,4 @@ export class AuthService {
     return this.token;
   }
 
->>>>>>> new_branch
 }

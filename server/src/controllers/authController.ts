@@ -37,15 +37,6 @@ class AuthController {
                     ual: user[0].user_access_level
                 }
                 res.send({dataUser});
-
-<<<<<<< HEAD
-    public async login (req: Request,res: Response) {
-        res.json('login');
-    }
-
-    public async logOut (req: Request,res: Response) {
-        res.json('logout');
-=======
                 
             }
 
@@ -89,7 +80,6 @@ class AuthController {
         }).catch((error: any) =>{
             res.status(500).send('server error');
         }); 
->>>>>>> new_branch
     }
 
 

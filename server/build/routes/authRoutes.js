@@ -21,7 +21,7 @@ class AuthRoutes {
         this.router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
             res.send(req.user);
         });
-=======
+
         this.router.get('/logout', authController.login);
         this.router.get('/google', authController.google);
         */

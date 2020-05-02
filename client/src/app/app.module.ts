@@ -14,18 +14,14 @@ import { MaterialModule } from './material.module';
 import { CategorieFormComponent } from './components/categorie-list/categorie-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TopicViewComponent } from './components/topic-view/topic-view.component';
-<<<<<<< HEAD
-import { SignupViewComponent } from './components/signup-view/signup-view.component';
 
-
-=======
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { FooterComponent } from './components/footer/footer.component';
->>>>>>> new_branch
+
 
 
 @NgModule({
@@ -37,13 +33,10 @@ import { FooterComponent } from './components/footer/footer.component';
     TopicFormComponent,
     CategorieFormComponent,
     TopicViewComponent,
-<<<<<<< HEAD
-    SignupViewComponent
-=======
     LoginComponent,
     RegisterComponent,
     FooterComponent
->>>>>>> new_branch
+
   ],
   imports: [
     BrowserModule,
