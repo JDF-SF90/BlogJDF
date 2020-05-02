@@ -13,5 +13,11 @@ exports.default = {
     },
     cookie: {
         sessionkey: 'blogJDF07'
+<<<<<<< HEAD
+=======
+    },
+    secretkey: {
+        secretkey: 'blogJDF07'
+>>>>>>> new_branch
     }
 };

@@ -1,7 +1,9 @@
 import { Router } from 'express';
+import '../libs/verifyToken';
 
 
 import categoriesController from '../controllers/categoriesController';
+import { verifyToken } from '../libs/verifyToken';
 
 class CategoriasRoutes {
 

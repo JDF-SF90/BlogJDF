@@ -217,7 +217,10 @@ BEGIN
 
 END$$
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> new_branch
 USE ng_blog_db;
 
 CREATE TABLE tripulantes(
@@ -232,7 +235,12 @@ CREATE TABLE tripulantes(
     created_datetime datetime not null,
     created_userId INT(11),
     modified_datetime datetime,
+<<<<<<< HEAD
     modified_userId INT(11)
+=======
+    modified_userId INT(11),
+    user_access_level INT
+>>>>>>> new_branch
 );
 
 USE ng_blog_db;
@@ -262,6 +270,7 @@ USE ng_blog_db;
 
 DELIMITER $$
 
+<<<<<<< HEAD
 CREATE PROCEDURE INSERT_TRIPULANTE_BYPROVIDER(
 IN pname  VARCHAR(100), 
 ppicture varchar(1000),
@@ -275,3 +284,30 @@ BEGIN
     
 END$$
 
+=======
+CREATE PROCEDURE INSERT_TRIPULANTE_BYMAIL(
+IN pname  VARCHAR(100), 
+pmail varchar(100),
+ppassword varchar(100)
+)
+BEGIN
+	
+    INSERT INTO TRIPULANTES (name, mail, password , is_active, created_datetime, created_userId, user_access_level)
+    VALUES (pname, pmail, ppassword, 1 , now(), 1, 0);
+    
+    SELECT tripulante_id, name, mail, user_access_level FROM TRIPULANTES WHERE mail = pmail;
+    
+END$$
+
+USE ng_blog_db;
+
+DELIMITER $$
+
+CREATE PROCEDURE GET_TRIPULANTE_BY_EMAIL(IN pMail varchar(100))
+BEGIN
+	
+    SELECT tripulante_id, name, mail, password, user_access_level FROM TRIPULANTES WHERE mail = pMail;
+
+END$$
+
+>>>>>>> new_branch

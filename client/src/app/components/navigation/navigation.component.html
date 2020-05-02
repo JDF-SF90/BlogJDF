@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <div class="container">
             <a class="navbar-brand" href="/">Jorge Díaz</a>
@@ -16,6 +16,7 @@
                     <li class="nav-item">
                         <a class="nav-link" routerLink="/acerca" routerLinkActive="active">Acerca</a>
                     </li>
+<<<<<<< HEAD
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Acciones</a>
                         <div class="dropdown-menu" style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: 0px; will-change: transform;" x-placement="bottom-start">
@@ -26,6 +27,30 @@
                     <li class="nav-item">
                         <a class="nav-link" routerLink="/SignUp" routerLinkActive="active">Registrate</a>
                     </li>
+=======
+                    <ng-container *ngIf="authService.ual()">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Acciones</a>
+                            <div class="dropdown-menu" style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: 0px; will-change: transform;" x-placement="bottom-start">
+                                <a class="dropdown-item" routerLink="/categorias">Categorias</a>
+                                <a class="dropdown-item" routerLink="/topics/add">Agregar Tema</a>
+                            </div>
+                        </li>
+                    </ng-container>
+                    <ng-container *ngIf="!authService.loggedIn(); else loggedIn">
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/register" routerLinkActive="active">Registrarse</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/login" routerLinkActive="active">LogIn</a>
+                        </li>
+                    </ng-container>
+                    <ng-template #loggedIn>
+                        <li class="nav-item">
+                            <a class="nav-link" style="cursor: pointer;" (click)="authService.logOut();">LogOut</a>
+                        </li>
+                    </ng-template>
+>>>>>>> new_branch
                 </ul>
             </div>
         </div>
