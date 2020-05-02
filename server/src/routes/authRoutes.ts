@@ -10,9 +10,13 @@ class AuthRoutes {
     }
 
     config(): void {
+        /*
         this.router.get('/login', authController.login);
         this.router.get('/logout', authController.login);
         this.router.get('/google', authController.google);
+        */
+       this.router.post('/register', authController.createUser);
+       this.router.post('/login', authController.loginUser);
     }
 
 }

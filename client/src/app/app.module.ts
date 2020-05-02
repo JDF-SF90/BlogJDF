@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
@@ -14,8 +14,12 @@ import { MaterialModule } from './material.module';
 import { CategorieFormComponent } from './components/categorie-list/categorie-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TopicViewComponent } from './components/topic-view/topic-view.component';
-
-
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './auth.guard';
+import { TokenInterceptorService } from './services/token-interceptor.service';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -26,7 +30,10 @@ import { TopicViewComponent } from './components/topic-view/topic-view.component
     TopicListComponent,
     TopicFormComponent,
     CategorieFormComponent,
-    TopicViewComponent
+    TopicViewComponent,
+    LoginComponent,
+    RegisterComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +46,10 @@ import { TopicViewComponent } from './components/topic-view/topic-view.component
     ReactiveFormsModule
   ],
   entryComponents: [CategorieFormComponent],
-  providers: [ CategoriesService],
+  providers: [ CategoriesService, AuthService, AuthGuard,
+              { provide: HTTP_INTERCEPTORS,
+                useClass: TokenInterceptorService,
+                multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

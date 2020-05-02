@@ -11,9 +11,13 @@ class AuthRoutes {
         this.config();
     }
     config() {
-        this.router.get('/login', authController_1.default.login);
-        this.router.get('/logout', authController_1.default.login);
-        this.router.get('/google', authController_1.default.google);
+        /*
+        this.router.get('/login', authController.login);
+        this.router.get('/logout', authController.login);
+        this.router.get('/google', authController.google);
+        */
+        this.router.post('/register', authController_1.default.createUser);
+        this.router.post('/login', authController_1.default.loginUser);
     }
 }
 const authRoutes = new AuthRoutes();

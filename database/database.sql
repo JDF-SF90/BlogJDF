@@ -216,3 +216,74 @@ BEGIN
     WHERE Topic = pId;
 
 END$$
+
+USE ng_blog_db;
+
+CREATE TABLE tripulantes(
+    tripulante_id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    apellido VARCHAR(100),
+    picture varchar(1000),
+    provider_id varchar(1000),
+	mail varchar(100),
+    pass varchar(100),
+    is_active int(1),
+    created_datetime datetime not null,
+    created_userId INT(11),
+    modified_datetime datetime,
+    modified_userId INT(11),
+    user_access_level INT
+);
+
+USE ng_blog_db;
+
+DELIMITER $$
+
+CREATE PROCEDURE GET_TRIPULANTE_BY_PROVIDERID(IN pId varchar(1000))
+BEGIN
+	
+    SELECT * FROM TRIPULANTES WHERE provider_id = pId;
+
+END$$
+
+USE ng_blog_db;
+
+DELIMITER $$
+
+CREATE PROCEDURE GET_TRIPULANTE_BY_ID(IN pId varchar(1000))
+BEGIN
+	
+    SELECT * FROM TRIPULANTES WHERE tripulante_id = pId;
+
+END$$
+
+
+USE ng_blog_db;
+
+DELIMITER $$
+
+CREATE PROCEDURE INSERT_TRIPULANTE_BYMAIL(
+IN pname  VARCHAR(100), 
+pmail varchar(100),
+ppassword varchar(100)
+)
+BEGIN
+	
+    INSERT INTO TRIPULANTES (name, mail, password , is_active, created_datetime, created_userId, user_access_level)
+    VALUES (pname, pmail, ppassword, 1 , now(), 1, 0);
+    
+    SELECT tripulante_id, name, mail, user_access_level FROM TRIPULANTES WHERE mail = pmail;
+    
+END$$
+
+USE ng_blog_db;
+
+DELIMITER $$
+
+CREATE PROCEDURE GET_TRIPULANTE_BY_EMAIL(IN pMail varchar(100))
+BEGIN
+	
+    SELECT tripulante_id, name, mail, password, user_access_level FROM TRIPULANTES WHERE mail = pMail;
+
+END$$
+
