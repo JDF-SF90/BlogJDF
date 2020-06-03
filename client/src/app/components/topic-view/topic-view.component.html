@@ -1,20 +1,48 @@
 <div class="row">
     <div *ngFor="let topic of topics">
-        <mat-card class="example-card">
+        <mat-card class="card">
             <mat-card-header>
-                <!--<div mat-card-avatar class="example-header-image"></div> -->
-                <mat-card-title>{{topic.name}}</mat-card-title>
-                <!--<mat-card-subtitle>{{project.category}}</mat-card-subtitle>-->
+                <div class="container">
+                    <div class="row no-gutters">
+                        <div class="col-1 col-sm-1 col-md-1 p-4" style="text-align: end;">
+                            <div mat-card-avatar class="example-header-image"></div>
+                        </div>
+                        <div class="col-6 col-md-5 p-4" style="text-align: start;">
+                            <mat-card-title>{{topic.name}}</mat-card-title>
+                        </div>
+                        <div class=" col-5 col-md-6 p-2 " style="text-align: end; ">
+                            <a href="# " class="fa fa-facebook "></a>
+                            <a href="# " class="fa fa-twitter "></a>
+                        </div>
+                    </div>
+                </div>
             </mat-card-header>
-            <img mat-card-image [src]="'http://localhost:3000/' + topic.picture">
+            <mat-divider></mat-divider>
+            <div class="container p-4">
+                <img mat-card-image style="width: 80%; display: block; margin-right: auto; margin-left: auto; " [src]=" 'http://localhost:3000/' + topic.picture ">
+            </div>
+            <mat-card-subtitle>4 min . 07-May</mat-card-subtitle>
+
             <mat-card-content>
 
                 {{ topic.contenido }}
 
             </mat-card-content>
+            <mat-divider></mat-divider>
             <mat-card-actions>
-                <button mat-button>LIKE</button>
-                <button mat-button>SHARE</button>
+                <div class="row no-gutters align-items-center">
+                    <div class="col-auto">
+                        <div class="float-right pb-3">
+                            <mat-icon>remove_red_eye</mat-icon>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <div class="float-left pl-1">
+                            <p style="text-align:center;">1</p>
+                        </div>
+                    </div>
+
+                </div>
             </mat-card-actions>
         </mat-card>
     </div>

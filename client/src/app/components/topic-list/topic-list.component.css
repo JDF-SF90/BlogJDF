@@ -7,10 +7,40 @@
     background-size: cover;
 }
 
-.text {
-    display: block;
-    overflow: hidden;
-    max-width: 75ch;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+.link {
+    color: black;
+    text-decoration: none;
+    background-color: none;
+}
+
+.fa {
+    padding: 10px;
+    font-size: 15px;
+    text-align: center;
+    text-decoration: none;
+}
+
+
+/* Add a hover effect if you want */
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+
+/* Set a specific color for each brand */
+
+
+/* Facebook */
+
+.fa-facebook {
+    background: white;
+    color: #3B5998;
+}
+
+
+/* Twitter */
+
+.fa-twitter {
+    color: #55ACEE;
 }

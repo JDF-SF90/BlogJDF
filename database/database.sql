@@ -231,7 +231,6 @@ CREATE TABLE tripulantes(
     created_datetime datetime not null,
     created_userId INT(11),
     modified_datetime datetime,
-    modified_userId INT(11)
     modified_userId INT(11),
     user_access_level INT
 );
@@ -276,6 +275,10 @@ BEGIN
     
 END$$
 
+USE ng_blog_db;
+
+DELIMITER $$
+
 CREATE PROCEDURE INSERT_TRIPULANTE_BYMAIL(
 IN pname  VARCHAR(100), 
 pmail varchar(100),
@@ -301,3 +304,6 @@ BEGIN
 
 END$$
 
+CREATE USER 'ng_blog_user'@'localhost' IDENTIFIED BY '12345678';
+
+GRANT ALL PRIVILEGES ON ng_blog_db . * TO 'ng_blog_user'@'localhost';

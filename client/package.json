@@ -5,7 +5,12 @@
     "main": "index.js",
     "scripts": {
         "build": "tsc -w",
-        "dev": "nodemon build/index.js"
+        "dev": "nodemon build/index.js",
+        "ng": "ng",
+        "start": "ng serve",
+        "test": "ng test",
+        "lint": "ng lint",
+        "e2e": "ng e2e"
     },
     "keywords": [],
     "author": "",
